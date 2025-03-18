@@ -1850,7 +1850,7 @@ xcopy /y /s "Bin\LegacyBoot.bat" "%Install2Folder%\" > NUL 2>&1
 xcopy /y /s "Bin\LegacyBootStart.bat" "%Install2Folder%\" > NUL 2>&1
 cls
 echo %color%─────────────────────────────────────────────────────────────────────────
-echo ► Transaction Successful!
+echo ► Operation Successful!
 echo %color%─────────────────────────────────────────────────────────────────────────
 pause
 goto :ince_ayarlar_start
@@ -1863,7 +1863,7 @@ xcopy /y /s "Bin\UnlimitedPassword.bat" "%Install2Folder%\" > NUL 2>&1
 xcopy /y /s "Bin\UnlimitedPasswordStart.bat" "%Install2Folder%\" > NUL 2>&1
 cls
 echo %color%─────────────────────────────────────────────────────────────────────────
-echo ► Transaction Successful!
+echo ► Operation Successful!
 echo %color%─────────────────────────────────────────────────────────────────────────
 pause
 goto :ince_ayarlar_start
@@ -1876,7 +1876,7 @@ ren Extracted\efi\microsoft\boot\efisys_noprompt.bin efisys.bin > NUL 2>&1
 ren Extracted\efi\microsoft\boot\cdboot_noprompt.efi cdboot.efi > NUL 2>&1
 cls
 echo %color%─────────────────────────────────────────────────────────────────────────
-echo ► Transaction Successful!
+echo ► Operation Successful!
 echo %color%─────────────────────────────────────────────────────────────────────────
 pause
 goto :ince_ayarlar_start

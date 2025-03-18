@@ -608,7 +608,7 @@ goto customize
 
 :auto_unattend
 chcp 65001 >nul
-rem Extracted klasöründeki autounattend.xml dosyasının kopyalanması
+rem Copying the autounattend.xml file from the Extracted folder.
 del Extracted\autounattend.xml
 xcopy /Y /E Bin\autounattend.xml Extracted\
 RD /S /Q Extracted\Driver
@@ -621,13 +621,13 @@ RD /S /Q Extracted\MicrosoftStore
 RD /S /Q Extracted\Regedit
 cls
 chcp 437 > NUL 2>&1
-rem Administrator adının sorulması ve xml dosyasındaki ShadesAdmin yazısıyla değiştirilmesi
+rem Asking for the Administrator name and replacing it with the text **ShadesAdmin** in the XML file.
 echo.
 set /p adminname=Please enter an admin name : 
 (powershell -Command "(gc Extracted\autounattend.xml) -replace 'ShadesAdmin','%adminname%' | Out-File -Encoding UTF8 Extracted\autounattend.xml") >nul 2>&1
 chcp 65001 >nul
 chcp 437 > NUL 2>&1
-rem Parolanın sorulması ve xml dosyasındaki password_change yazısıyla değiştirilmesi
+rem Asking for the password and replacing it with the text **password_change** in the XML file.
 echo.
 set /p new_password=Please enter a password : 
 (powershell -Command "(gc Extracted\autounattend.xml) -replace 'password_change','%new_password%' | Out-File -Encoding UTF8 Extracted\autounattend.xml") >nul 2>&1
@@ -861,7 +861,7 @@ echo %color%──────────────────────�
 :MicrosoftStore_start
 set choice=NT
 cls
-REM Microsoft Store ve gerekli componentler indirme işlemi
+REM Downloading Microsoft Store and the necessary components.
 set "URL1=https://github.com/shadesofdeath/MicrosoftStore/raw/main/Microsoft.DesktopAppInstaller.msixbundle"
 set "URL2=https://github.com/shadesofdeath/MicrosoftStore/raw/main/Microsoft.NET.Native.Framework.1.3.x64.appx"
 set "URL3=https://github.com/shadesofdeath/MicrosoftStore/raw/main/Microsoft.NET.Native.Framework.2.2.x64.Appx"
@@ -874,10 +874,10 @@ set "URL9=https://github.com/shadesofdeath/MicrosoftStore/raw/main/Microsoft.VCL
 set "URL10=https://github.com/shadesofdeath/MicrosoftStore/raw/main/Microsoft.WindowsStore.msixbundle"
 set "URL11=https://github.com/shadesofdeath/MicrosoftStore/raw/main/Microsoft.XboxIdentityProvider.AppxBundle"
 
-REM dosyaların kaydedileceği yolu seçin
+REM Select the path where the files will be saved.
 set download_path=Custom\MicrosoftStore
 
-REM aria2c'yi kullanarak dosyaları indirin
+REM Download the files using **aria2c**.
 IF NOT EXIST Custom\MicrosoftStore\Microsoft.DesktopAppInstaller.msixbundle (
   Bin\aria2c.exe -x 16 -s 16 -d "%download_path%" "%URL1%"
 )
@@ -1422,7 +1422,7 @@ for /f "tokens=2 delims=: " %%a in ('findstr /i "PackageName" %Location%\Temp\ap
   set /a i+=1
 )
 set /a i-=1
-rem Paket adlarını listele ve seçim yap
+rem List the package names and make a selection.
 echo.
 echo [99] Back
 echo.
@@ -1522,12 +1522,11 @@ if not exist "%install_wim%" (
 cls
 echo.
 set InstallWim=Extracted\sources\install.wim
-:: install.wim içeriğini okuması için gönderiyoruz.
-cls
+:: We are sending it to read the contents of **install.wim**.cls
 mode con cols=130 lines=36
 Call :Toolkit_Reader "%InstallWim%"
 set /p Index=► Please enter index number : 
-:: Çıkarma işlemi uygulanıyor..
+:: Extraction process is being applied...
 FOR /F "tokens=3" %%a IN ('Dism /Get-WimInfo /WimFile:%InstallWim% /Index:%Index% ^| FIND "Architecture"') do (
 	FOR /F "tokens=2 delims=:" %%b IN ('Dism /Get-WimInfo /WimFile:%InstallWim% /Index:%Index% ^| FIND "Name"') do (
 		FOR /F "tokens=*" %%c in ('echo %%b') do (
@@ -1969,13 +1968,13 @@ set Error=0
 RD /S /Q %Location%\Bin\TurnReg > NUL 2>&1
 MD %Location%\Bin\TurnReg > NUL 2>&1
 copy /y "%Location%\Bin\Regs\%~1.reg" "%Location%\Bin\TurnReg" > NUL 2>&1
-:: Offline regedit eklemek için Regedit klasörüne eklenen .reg dosyaları uygun şekilde düzenlenir.
-:: Regedit kayıtlarında boşluk ve Türkçe harf olma ihtimaline karşılık isimlerine random sayılar veriyorum.
+:: The .reg files added to the **Regedit** folder are properly modified to add offline regedit.  
+:: To avoid issues with spaces and Turkish characters in the registry names, I am assigning random numbers to their names.
 FOR /f "tokens=*" %%g in ('dir /b /s %Location%\Bin\TurnReg\*.reg 2^>NUL') do (Call :Regedit_Convert_Rename "%%g")
 timeout /t 1 /nobreak > NUL
 Call :Powershell_2 "Bin\ConvertReg.ps1" "%Location%\Bin\TurnReg" "%Location%\Bin\TurnReg"
 Call :RegeditInstallBoot
-:: Regedit kayıtlarını yükler
+:: Loads the Regedit entries.
 FOR /F "tokens=*" %%g in ('dir /b /s %Location%\Bin\TurnReg\*.reg 2^>NUL') do (
 	Call :Reg_Import %%g
 )
@@ -2027,7 +2026,7 @@ set "export_param=all"
 set "compress_param=lzms"
 set wimlib=Bin\wimlib-imagex.exe
 set "solid_param=--solid"
-REM Wimlib imagex komutunu kullanarak install.wim dosyasını işleyin
+REM Process the **install.wim** file using the **wimlib-imagex** command.
 %wimlib% export "%source_file%" "%export_param%" "%dest_file%" --compress="%compress_param%" %solid_param%
 echo.
 echo  %color%────────────────────────────────────────────────────────────────
@@ -2108,14 +2107,14 @@ timeout /t 3
 exit
 
 :Powershell
-:: Powershell komutları kullanıldığında komut istemi compact moda girmektedir. Bunu önlemek için karakter takımları arasında geçiş yapıyoruz.
+:: When PowerShell commands are used, the command prompt enters compact mode. To prevent this, we switch between character sets.
 chcp 437 > NUL 2>&1
 Powershell -command %*
 chcp 65001 > NUL 2>&1
 goto :eof
 
 :Powershell_2
-:: Powershell komutları kullanıldığında komut istemi compact moda girmektedir. Bunu önlemek için karakter takımları arasında geçiş yapıyoruz.
+:: When PowerShell commands are used, the command prompt enters compact mode. To prevent this, we switch between character sets.
 chcp 437 > NUL 2>&1
 Powershell -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command %*
 chcp 65001 > NUL 2>&1

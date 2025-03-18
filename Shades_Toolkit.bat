@@ -237,7 +237,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -406,7 +406,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -751,7 +751,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -814,7 +814,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -852,7 +852,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -937,7 +937,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -965,7 +965,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -1138,7 +1138,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -1400,7 +1400,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -1653,7 +1653,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -2044,7 +2044,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%─────────────────────────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%─────────────────────────────────────────────────────────────────────────
   pause
   cls

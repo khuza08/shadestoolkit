@@ -19,12 +19,13 @@ fltmc >nul 2>&1 || (
     exit 0
 )
 
-:: Konum bilgisi
+:: Location information
 cd /d "%~dp0"
 for /f %%a in ('"cd"') do set Location=%%a
 set INSTALL=%Location%\Mount\Install
 set InstallWim=%Location%\Extracted\sources\install.wim
-:: Yüklü mount yollarını alır ve remount işlemi yapar. Bunun uygulanması olası hataları önlemektedir.
+:: It retrieves the mounted paths and performs a remount operation. 
+:: This helps prevent potential errors.
 FOR /F "tokens=4" %%a in ('dism /get-mountedwiminfo ^| FIND "Mount Dir"') do (
 	FOR /F "delims=\\? tokens=*" %%b in ('echo %%a') do (
 		Dism /Remount-Image /MountDir:"%%b" > NUL 2>&1
@@ -32,7 +33,7 @@ FOR /F "tokens=4" %%a in ('dism /get-mountedwiminfo ^| FIND "Mount Dir"') do (
 	)
 )
 cls
-:: silme
+:: App list that will be deleted
 DEL /F /Q /A "%Location%\Temp\app_list.txt" > NUL 2>&1
 DEL /F /Q /A "%Location%\Temp\app_list2.txt" > NUL 2>&1
 
@@ -53,10 +54,10 @@ if "%CLEAR%"=="Y" (
     if errorlevel 2 (
         goto menu
     )
-    REM Kullanıcı "Y" seçeneğini seçtiğinde, belirtilen etikete gidilecek.
+    REM When the user selects the "Y" option, it will go to the specified label.
     goto menu
 ) else (
-    REM Kullanıcı "N" seçeneğini seçtiğinde, "Dismount" işlemi yapılacak.
+    REM When the user selects the "N" option, the "Dismount" operation will be performed.
     Dism /Unmount-image /MountDir:%INSTALL% /Discard
 )
 
@@ -65,9 +66,9 @@ set choice=NT
 mode con cols=100 lines=35
 cls
 echo.      
-echo  %color%╭──────────────────────────────────────╮
-echo  %color%│  S h a d e s  T o o l k i t  %ver% │
-echo  %color%╰──────────────────────────────────────╯
+echo  %color%╭─────────────────────────────────────────╮
+echo  %color%│  S h a d e s  E x t e n d e d  %ver%  │
+echo  %color%╰─────────────────────────────────────────╯
 echo.
 echo   [1] Source
 echo.
@@ -118,7 +119,7 @@ if exist "Mount\Install\Windows\regedit.exe" (
 ) else (
   cls
 echo %color%────────────────────────────────────────────────────
-echo ► Uyarı : Please perform the mount process first!
+echo ► Warning : Please perform the mount process first!
 echo %color%────────────────────────────────────────────────────
   pause
   cls
@@ -129,9 +130,9 @@ cls
 set choice=NT
 mode con cols=140 lines=37
 echo.      
-echo  %color%╭──────────────────────────────────────╮
-echo  %color%│  S h a d e s  T o o l k i t  %ver% │
-echo  %color%╰──────────────────────────────────────╯
+echo  %color%╭─────────────────────────────────────────╮
+echo  %color%│  S h a d e s  E x t e n d e d  %ver%  │
+echo  %color%╰─────────────────────────────────────────╯
 echo.
 echo  [1] Sysmain Disable
 echo  [2] Print Spooler Disable

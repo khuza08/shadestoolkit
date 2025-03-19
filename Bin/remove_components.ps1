@@ -41,14 +41,26 @@ $button.Add_Click({
     $checkedItems = $checkBoxList.SelectedItems
     $count = $checkedItems.Count
     $progress = 0
+
+    # Parallel removal of components using Jobs
     foreach ($component in $checkedItems) {
-        $progress++
-        Write-Host "Kaldiriliyor: $component ($progress / $count)"
-        & Bin\ToolkitHelper.exe Mount\Install $component
+        Start-Job -ScriptBlock {    # Start-Job used for asynchronous execution
+            param ($component)
+            Write-Host "Removing: $component"
+            & Bin\ToolkitHelper.exe Mount\Install $component
+        } -ArgumentList $component
     }
-    [System.Windows.MessageBox]::Show("$count component removed.", "Remove Succes!", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
-	exit
+    
+    # Wait for all jobs to complete before proceeding
+    while (Get-Job -State Running) {  
+        Start-Sleep -Seconds 1
+    }
+    
+    # Show completion message when all jobs are finished
+    [System.Windows.MessageBox]::Show("$count component(s) removed.", "Remove Success!", [System.Windows.MessageBoxButton]::OK, [System.Windows.MessageBoxImage]::Information)
+    exit
 })
+
 $stackPanel.Children.Add($button)
 
 $window.ShowDialog() | Out-Null

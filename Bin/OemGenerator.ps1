@@ -19,23 +19,23 @@ Add-Type -AssemblyName PresentationFramework
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Foreground="Black">Manufacturer:</Label>
+        <Label Grid.Row="0" Grid.Column="0" Foreground="white">Manufacturer:</Label>
         <TextBox Grid.Row="0" Grid.Column="1" Width="300" Name="Manufacturer"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
-        <Label Grid.Row="1" Grid.Column="0" Foreground="Black">Model:</Label>
+        <Label Grid.Row="1" Grid.Column="0" Foreground="white">Model:</Label>
         <TextBox Grid.Row="1" Grid.Column="1" Width="300" Name="Model"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
-        <Label Grid.Row="2" Grid.Column="0" Foreground="Black">Support Hours:</Label>
+        <Label Grid.Row="2" Grid.Column="0" Foreground="white">Support Hours:</Label>
         <TextBox Grid.Row="2" Grid.Column="1" Width="300" Name="SupportHours"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
-        <Label Grid.Row="3" Grid.Column="0" Foreground="Black">Support Phone:</Label>
+        <Label Grid.Row="3" Grid.Column="0" Foreground="white">Support Phone:</Label>
         <TextBox Grid.Row="3" Grid.Column="1" Width="300" Name="SupportPhone"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
-        <Label Grid.Row="4" Grid.Column="0" Foreground="Black">Support URL:</Label>
+        <Label Grid.Row="4" Grid.Column="0" Foreground="white">Support URL:</Label>
         <TextBox Grid.Row="4" Grid.Column="1" Width="300" Name="SupportURL"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 

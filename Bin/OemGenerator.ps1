@@ -4,7 +4,7 @@ Add-Type -AssemblyName PresentationFramework
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ShadesToolkit - OEM Information Changer" Height="250" Width="450"
-        Background="White" Foreground="Black">
+        Background="black" Foreground="white">
     <Grid Margin="0,15,0,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -19,7 +19,7 @@ Add-Type -AssemblyName PresentationFramework
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Foreground="Black">Uretici firma:</Label>
+        <Label Grid.Row="0" Grid.Column="0" Foreground="Black">Manufacturer:</Label>
         <TextBox Grid.Row="0" Grid.Column="1" Width="300" Name="Manufacturer"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
@@ -27,15 +27,15 @@ Add-Type -AssemblyName PresentationFramework
         <TextBox Grid.Row="1" Grid.Column="1" Width="300" Name="Model"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
-        <Label Grid.Row="2" Grid.Column="0" Foreground="Black">Destek Saatleri:</Label>
+        <Label Grid.Row="2" Grid.Column="0" Foreground="Black">Support Hours:</Label>
         <TextBox Grid.Row="2" Grid.Column="1" Width="300" Name="SupportHours"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
-        <Label Grid.Row="3" Grid.Column="0" Foreground="Black">Destek Telefon:</Label>
+        <Label Grid.Row="3" Grid.Column="0" Foreground="Black">Support Phone:</Label>
         <TextBox Grid.Row="3" Grid.Column="1" Width="300" Name="SupportPhone"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
-        <Label Grid.Row="4" Grid.Column="0" Foreground="Black">Destek URL:</Label>
+        <Label Grid.Row="4" Grid.Column="0" Foreground="Black">Support URL:</Label>
         <TextBox Grid.Row="4" Grid.Column="1" Width="300" Name="SupportURL"
                  BorderThickness="1" BorderBrush="Black" Margin="5"/>
 
@@ -74,7 +74,7 @@ exit
 
 	Set-Content -Path $regFilePath -Value $regFileContent
 
-	[System.Windows.MessageBox]::Show("OEM Bilgileri kayit edildi!")
+	[System.Windows.MessageBox]::Show("OEM Information has been registered!")
 	exit
 
 
